@@ -1,0 +1,37 @@
+
+<div class="form-group row">
+  <%= task.label :name, "Task Name", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= task.text_field :name, class: "form-control", placeholder: "Task Name" %>
+ </div>
+</div>
+
+<div class="form-group row">
+  <%= task.label :due_date, "Project Type", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= task.date_select :due_date, :order => [:month, :day, :year], class: "form-control" %>
+ </div>
+</div>
+
+<div class="form-group row">
+  <%= task.label :description, "Task Description", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= task.text_area :description, class: "form-control", placeholder: "Task Description" %>
+ </div>
+
+
+ <div class="form-group row">
+ <%= task.label :status, "Assigned Project", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= task.select :status, Task.statuses.collect {|k,v| [k.capitalize, k]} %>
+ </div><p></p>
+
+ <div class="form-group row">
+ <%= task.label :user_id, "Assigned Project", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= task.collection_select(:user_id, User.all, :id, :email, html: {class: "form-control"}) %>
+ </div>
+
+ <%= task.hidden_field :project_id, value: @project.id %>
+
+</div>

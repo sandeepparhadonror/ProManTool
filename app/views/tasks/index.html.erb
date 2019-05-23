@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-sm-8">
+		<h2>Project Tasks List</h2>  	
+	</div>
+	<div class="col-sm-4">
+		<%= link_to "Project List", projects_path, class: "btn btn-success" %>
+		<%= link_to "Add Task", new_project_task_path(@project), class: "btn btn-success" %>
+	</div>
+</div>
+
+<br>
+
+<table class="table table-bordered table-hover table-sm">
+	<thead>
+		<tr>
+			<th scope="col">Task ID</th>
+			<th scope="col">Task Name</th>
+			<th scope="col">Task Status</th>
+			<th scope="col">Task Assign Name</th>
+			<th scope="col">Task Action</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<% @tasks.each do |task| %>
+		<tr>
+			<td scope="row" ><%= task.id %></td>
+			<td><%= task.name %></td>
+			<td><%= task.status %></td>
+			<td><%= task.user.email %></td>
+			<td>
+			  <%= link_to "Edit", edit_project_task_path(@project.id, task.id), class: " btn btn-warning btn-sm" %>
+				<%= link_to "Delete", project_task_path(@project, task.id),method: :delete, data: { confirm: 'Are you sure?' }, class: " btn btn-danger btn-sm" %>
+			</td>
+
+		</tr>
+		<% end %>
+
+	</tbody>
+</table>

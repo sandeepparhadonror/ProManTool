@@ -1,0 +1,27 @@
+<h2>Project List</h2>
+<br>
+
+<table class="table table-bordered table-hover table-sm">
+	<thead>
+		<tr>
+			<th scope="col">Project ID</th>
+			<th scope="col">Project Name</th>
+			<th scope="col">Project Type</th>
+			<th scope="col">project Owner</th>
+			<th scope="col">project Update</th>
+			<th scope="col">Add Task</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td scope="row" ><%= @project.id %></td>
+			<td><%= @project.project_name %></td>
+			<td><%= @project.project_type %></td>
+			<td><%= @project.user.email %></td>
+			<td><%= link_to "edit", edit_project_url(@project) %></td>
+			<td><%= link_to "Add Task", new_project_task_path(@project) %></td>
+		</tr>
+
+	</tbody>
+</table>

@@ -1,0 +1,37 @@
+
+<div class="form-group row">
+  <%= p.label :project_name, "Project Name", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= p.text_field :project_name, class: "form-control", placeholder: "Project Name" %>
+ </div>
+</div>
+
+<div class="form-group row">
+  <%= p.label :project_type, "Project Type", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= p.text_field :project_type, class: "form-control", placeholder: "Project Type" %>
+ </div>
+</div>
+
+<div class="form-group row">
+  <%= p.label :project_description, "Project Description", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= p.text_area :project_description, class: "form-control", placeholder: "Project Description" %>
+ </div>
+
+
+ <div class="form-group row">
+ <%= p.label :status, "Assigned Project", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= p.select :status, Task.statuses.collect {|k,v| [k.capitalize, k]} %>
+ </div><p></p>
+
+ <div class="form-group row">
+ <%= p.label :user_id, "Assigned Task", class: "col-sm-2 col-form-label" %>
+  <div class="col-sm-4">
+   <%= p.collection_select(:user_id, User.all, :id, :email, html: {class: "form-control"}) %>
+ </div>
+
+
+
+</div>
