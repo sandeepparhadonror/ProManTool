@@ -6,8 +6,8 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   has_many  :projects
-  has_many  :tasks
 
+  has_many :tasks, foreign_key: "owner_id"
   has_many :user_tasks, foreign_key: "assigned_user_id"
   has_many :assigned_tasks, through: :user_tasks
 

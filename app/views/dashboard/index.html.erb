@@ -1,36 +1,4 @@
-<h2> DashBoard page for project manager </h2>
+<%= @project %>
+<%= @task %>
 
-<% @project.each do |project|  %>
-
-<h3> Project Manager : <%= project.user.username %> </h3>
-
-<h3>Projects Task</h3>
-
-
-<table class="table table-bordered table-hover table-sm">
-	
-	<thead>
-		<tr>
-			<th scope="col">Task Status</th>
-			<% @task.each do |p| %>
-			<th scope="col"><%= p.user.username%></th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
-
-		<% @task.each do |p| %>
-		<tr>
-			<td scope="row" ><%= p.id %></td>
-			<td><%= p.name %></td>
-			<td><%= p.status %></td>
-			
-		</tr>
-		<% end %>		
-
-	</tbody>
-
-</table>
-
-<% end %>
-
+ <h2> DashBoard page for project manager </h2>

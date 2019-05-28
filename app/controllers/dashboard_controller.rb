@@ -3,8 +3,8 @@ class DashboardController < ApplicationController
 	
 	def index
 		@project = @user.projects
-		projects_ids = @project.pluck(:id)
-		@task =  Task.where(project_id: projects_ids )
+		@task = @project.joins(:tasks)
+		#@task = Task.where(project_id: @project.ids)
 
 	end
 

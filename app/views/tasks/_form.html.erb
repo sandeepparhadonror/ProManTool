@@ -27,9 +27,9 @@
  </div><p></p>
 
  <div class="form-group row">
- <%= task.label :user_id, "Assigned Project", class: "col-sm-2 col-form-label" %>
+ <%= task.label :owner_id, "Assigned Project", class: "col-sm-2 col-form-label" %>
   <div class="col-sm-4">
-   <%= task.collection_select(:user_id, User.all, :id, :email, html: {class: "form-control"}) %>
+   <%= task.collection_select(:owner_id, User.all, :id, :email, html: {class: "form-control"}) %>
  </div>
 
  <%= task.hidden_field :project_id, value: @project.id %>

@@ -19,7 +19,7 @@ class Ability
 
     if user.has_role? :developer
       # only edit the task and only view task page
-      can :update, Task, { visible: true }
+      can :update, Task
     end   
 
     #

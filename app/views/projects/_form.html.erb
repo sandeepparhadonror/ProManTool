@@ -27,9 +27,9 @@
  </div><p></p>
 
  <div class="form-group row">
- <%= p.label :user_id, "Assigned Task", class: "col-sm-2 col-form-label" %>
+ <%= p.label :owner_id, "Assigned Task", class: "col-sm-2 col-form-label" %>
   <div class="col-sm-4">
-   <%= p.collection_select(:user_id, User.all, :id, :email, html: {class: "form-control"}) %>
+   <%= p.collection_select(:owner_id, User.all, :id, :email, html: {class: "form-control"}) %>
  </div>
 
 

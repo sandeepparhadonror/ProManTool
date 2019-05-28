@@ -3,7 +3,9 @@
 		<h2>Project List</h2>  	
 	</div>
 	<div class="col-sm-2">
-		<%= link_to "Add Project", new_project_path, class: "btn btn-success" %>
+		<% if can? :manage, :all , @user.has_role?(:admin) 	%>
+		  <%= link_to "Add Project", new_project_path, class: "btn btn-success" %>
+		<% end %>
 	</div>
 </div>
 
@@ -28,11 +30,15 @@
 			<td><%= p.project_name %></td>
 			<td><%= p.status %></td>
 			<td><%= p.project_type %></td>
-			<td><%= p.user.email %></td>
+			<td><%= p.owner.email %></td>
 			<td>
-			  <%= link_to "Edit", edit_project_path(p), class: " btn btn-warning btn-sm" %>
+				<% if can? :manage, :all , @user.has_role?(:admin) 	%>
+				<%= link_to "Edit", edit_project_path(p), class: " btn btn-warning btn-sm" %>
 				<%= link_to "Delete", project_path(p),method: :delete, data: { confirm: 'Are you sure?' }, class: " btn btn-danger btn-sm" %>
+				<% end %>
+				<% if can? :manage, Task, @user.has_role?(:projectmanager) %>
 				<%= link_to "Add Task", new_project_task_path(p), class: " btn btn-primary btn-sm" %>
+				<% end %>
 				<%= link_to 'Tasks', project_tasks_path(p.id), class: " btn btn-primary btn-sm" %>
 			</td>
 
