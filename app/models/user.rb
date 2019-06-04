@@ -5,7 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  has_many  :projects
+  has_many  :projects, foreign_key: "owner_id"
+  has_many :user_projects, foreign_key: "collaborator_id"
+  has_many :collaboration_projects, through: :user_projects
 
   has_many :tasks, foreign_key: "owner_id"
   has_many :user_tasks, foreign_key: "assigned_user_id"
